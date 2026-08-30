@@ -1744,7 +1744,7 @@ var OB = {
 
     h += '<div id="s2-manual" class="tab-panel">';
     h += '<div class="card"><div class="fg-group"><label>' + Utils.cap(Utils.vocab('cosa')) + '</label><input id="s2-name" placeholder="Cálculo, Historia…"></div>';
-    h += '<div class="two-col"><div class="fg-group"><label>Inicio</label><input id="s2-start" class="input-time" type="text" inputmode="numeric" autocomplete="off" placeholder="HH:MM (ej. 08:30)" onblur="UI.blurTime(this)"></div><div class="fg-group"><label>Fin</label><input id="s2-end" class="input-time" type="text" inputmode="numeric" autocomplete="off" placeholder="HH:MM (ej. 10:00)" onblur="UI.blurTime(this)"></div></div>';
+    h += '<div class="two-col"><div class="fg-group"><label>Inicio</label><input id="s2-start" class="input-time" type="time"></div><div class="fg-group"><label>Fin</label><input id="s2-end" class="input-time" type="time"></div></div>';
     h += '<div class="fg-group"><label>Días</label>' + UI.dayChips([], 's2-chips') + '</div></div>';
     h += '<button class="btn-secondary btn-sm mt-8" onclick="OB._s2add()">+ Agregar</button>';
     h += '</div>';
@@ -1853,7 +1853,7 @@ var OB = {
     var item = State.schedule.find(function(c){ return c.id === id; });
     if (!item) return;
     var h = '<div class="fg-group"><label>Nombre</label><input id="e-name" value="' + Utils.esc(item.name) + '"></div>';
-    h += '<div class="two-col"><div class="fg-group"><label>Inicio</label><input id="e-start" class="input-time" type="text" inputmode="numeric" autocomplete="off" placeholder="HH:MM" value="' + item.start + '" onblur="UI.blurTime(this)"></div><div class="fg-group"><label>Fin</label><input id="e-end" class="input-time" type="text" inputmode="numeric" autocomplete="off" placeholder="HH:MM" value="' + item.end + '" onblur="UI.blurTime(this)"></div></div>';
+    h += '<div class="two-col"><div class="fg-group"><label>Inicio</label><input id="e-start" class="input-time" type="time" value="' + item.start + '"></div><div class="fg-group"><label>Fin</label><input id="e-end" class="input-time" type="time" value="' + item.end + '"></div></div>';
     h += '<div class="fg-group"><label>Días</label>' + UI.dayChips(item.days, 'e-chips') + '</div>';
     h += '<div class="fg mt-12"><button class="btn-primary" onclick="OB._s2save(\'' + id + '\')">Guardar</button><button class="btn-secondary" onclick="UI.closeModal()">Cancelar</button></div>';
     UI.modal('Editar clase', h);
@@ -1902,7 +1902,7 @@ var OB = {
       h += '<div class="pill" data-atype="' + t + '" onclick="UI.togglePill(this)">' + Utils.cap(t) + '</div>';
     });
     h += '</div></div>';
-    h += '<div class="two-col"><div class="fg-group"><label>Inicio <span class="t-xs t-dim">(opcional)</span></label><input id="s3-start" class="input-time" type="text" inputmode="numeric" autocomplete="off" placeholder="HH:MM o vacío" onblur="UI.blurTime(this)"></div><div class="fg-group"><label>Fin <span class="t-xs t-dim">(opcional)</span></label><input id="s3-end" class="input-time" type="text" inputmode="numeric" autocomplete="off" placeholder="HH:MM o vacío" onblur="UI.blurTime(this)"></div></div>';
+    h += '<div class="two-col"><div class="fg-group"><label>Inicio <span class="t-xs t-dim">(opcional)</span></label><input id="s3-start" class="input-time" type="time"></div><div class="fg-group"><label>Fin <span class="t-xs t-dim">(opcional)</span></label><input id="s3-end" class="input-time" type="time"></div></div>';
     h += '<div class="fg-group"><label>Días</label>' + UI.dayChips([], 's3-chips') + '</div></div>';
     h += '<button class="btn-secondary btn-sm mt-8" onclick="OB._s3add()">+ Agregar</button>';
     h += '</div>';
@@ -2211,7 +2211,7 @@ var OB = {
     });
     h += '</div></div>';
 
-    h += '<div class="two-col"><div class="fg-group"><label>Hora de levantarse</label><input id="pref-wake" class="input-time" type="text" inputmode="numeric" autocomplete="off" value="' + wakeDisp + '" placeholder="HH:MM (ej. 07:00)" oninput="OB._updateSleep()" onblur="UI.blurTime(this);OB._updateSleep();OB._refreshPreview();"></div><div class="fg-group"><label>Hora de acostarse</label><input id="pref-sleep" class="input-time" type="text" inputmode="numeric" autocomplete="off" value="' + sleepDisp + '" placeholder="HH:MM (ej. 23:00)" oninput="OB._updateSleep()" onblur="UI.blurTime(this);OB._updateSleep();OB._refreshPreview();"></div></div>';
+    h += '<div class="two-col"><div class="fg-group"><label>Hora de levantarse</label><input id="pref-wake" class="input-time" type="time" value="' + wakeDisp + '" oninput="OB._updateSleep();OB._refreshPreview();"></div><div class="fg-group"><label>Hora de acostarse</label><input id="pref-sleep" class="input-time" type="time" value="' + sleepDisp + '" oninput="OB._updateSleep();OB._refreshPreview();"></div></div>';
     h += '<div style="text-align:center;padding:6px 0;"><div class="t-sm t-muted">Horas de sueño estimadas</div><div class="sleep-num" id="sleep-display">-</div><div class="t-sm" id="sleep-note" style="margin-top:3px;"></div></div>';
     h += '</div>';
 
